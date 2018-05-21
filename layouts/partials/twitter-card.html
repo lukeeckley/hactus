@@ -1,0 +1,13 @@
+<meta name="twitter:title" content="{{ .Title }}"/>
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}"/>
+{{- if .Params.featured_image -}}
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lukeeckley.com/images/{{ .Params.featured_image }}"/>
+{{ else -}}
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://lukeeckley.com/images/avatar@2x.jpg"/>
+{{- end -}}
+{{ with .Site.Social.twitter -}}
+<meta name="twitter:site" content="@{{ . }}"/>
+<meta name="twitter:creator" content="@{{ . }}"/>
+{{ end }}
